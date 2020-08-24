@@ -6,13 +6,8 @@
 
 
 
-async function getResults(keyword){
-    const api_key = "41728cc89ddb95370acfded3f1e2f7ab";
-    const base_url = "https://api.themoviedb.org/3";
+import Search from './models/Search';
+const search = new Search('abc');
 
-    const response = await fetch(`${base_url}/search/movie?api_key=${api_key}&language=en-US&query=${keyword}&page=1&include_adult=false`);
-    const data = await response.json();
-    console.log(data.results);
-}
-
-getResults('abc');
+console.log(search);
+search.getResults();
