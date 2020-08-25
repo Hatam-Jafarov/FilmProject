@@ -7,8 +7,11 @@
 import Search from './models/Search';
 import {elements} from './base';
 import * as searchView from './views/searchView';
+import { Movie } from './models/Movie';
 
 const state = {};
+
+// Search Controller
 
 const searchController = async () => {
     const keyword = elements.searchInput.value;
@@ -32,3 +35,9 @@ elements.searchForm.addEventListener('submit',function(e){
     console.log('form-submitted');
     console.log(elements)
 })
+
+// Movie Controller
+
+const movie = new Movie(252291);
+
+movie.GetMovie()
