@@ -38,6 +38,14 @@ elements.searchForm.addEventListener('submit',function(e){
 
 // Movie Controller
 
-const movie = new Movie(252291);
+const movieController = async () => {
+    const id = window.location.hash.replace('#','');
+    if(id){
+        state.movie = new Movie(id);
+        await state.movie.getMovie();
 
-movie.GetMovie()
+        console.log(state.movie)
+    }
+    
+};
+window.addEventListener('hashchange',movieController)
