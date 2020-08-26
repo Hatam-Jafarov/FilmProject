@@ -7,7 +7,7 @@ export const clearResults = () => {
     elements.searchResults.innerHTML = '';
 }
 
-export const displayResults = data => {
+export const displayResults = (keyword,data) => {
     data.results.forEach(movie => {
         const html = `
             <a href="#${movie.id}" class="text-decoration-none">
@@ -24,6 +24,10 @@ export const displayResults = data => {
                 </li>
             </a>
         `;
+
+        elements.movieListHeader.innerHTML =  `<span class='text-success'>${keyword}</span> axtarış sözü üçün <span class='text-success'>${data.total_results}</span> nəticə tapıldı`;
+
+        elements.movieListContainer.classList.add('d-block');
 
         elements.searchResults.insertAdjacentHTML('beforeend', html);
     })

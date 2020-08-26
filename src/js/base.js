@@ -1,7 +1,12 @@
 export const elements = {
     searchForm: document.getElementById('form-search'),
     searchInput: document.getElementById('txt-keyword'),
-    searchResults: document.getElementById('results')
+    searchResults: document.getElementById('movie-list'),
+    movieDetails: document.getElementById('movie-details'),
+    movieDetailsContainer: document.getElementById('movie-details-container'),
+    movieListContainer: document.getElementById('movie-list-container'),
+    movieDetailsClose: document.getElementById('movie-details-close'),
+    movieListHeader: document.getElementById('movie-list-header')
 }
 
 export const image_size = {

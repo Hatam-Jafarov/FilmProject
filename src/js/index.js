@@ -7,6 +7,7 @@
 import Search from './models/Search';
 import {elements} from './base';
 import * as searchView from './views/searchView';
+import * as movieView from './views/movieView';
 import { Movie } from './models/Movie';
 
 const state = {};
@@ -22,7 +23,7 @@ const searchController = async () => {
         await state.search.getResults();
         searchView.clearSearch();
         searchView.clearResults();
-        searchView.displayResults(state.search.data)
+        searchView.displayResults(keyword,state.search.data)
     }
     else{
         alert('enter keyword')
@@ -44,8 +45,11 @@ const movieController = async () => {
         state.movie = new Movie(id);
         await state.movie.getMovie();
 
-        console.log(state.movie)
+        movieView.displayMovie(state.movie.data);
+        movieView.backToTop();
     }
     
 };
-window.addEventListener('hashchange',movieController)
+window.addEventListener('hashchange',movieController);
+
+elements.movieDetailsClose.addEventListener('click',movieView.closeDetails)
