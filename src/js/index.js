@@ -5,7 +5,7 @@
 //https://api.themoviedb.org/3/search/movie?api_key=41728cc89ddb95370acfded3f1e2f7ab&language=en-US&query=abc&page=1&include_adult=false
 
 import Search from './models/Search';
-import {elements} from './base';
+import {elements,renderLoader,clearLoader} from './base';
 import * as searchView from './views/searchView';
 import * as movieView from './views/movieView';
 import { Movie } from './models/Movie';
@@ -16,14 +16,21 @@ const state = {};
 
 const searchController = async () => {
     const keyword = elements.searchInput.value;
-    console.log(keyword)
     if(keyword){
         state.search = new Search(keyword);
 
-        await state.search.getResults();
         searchView.clearSearch();
         searchView.clearResults();
-        searchView.displayResults(keyword,state.search.data)
+
+        renderLoader(elements.movieListContainer)
+
+        await state.search.getResults();
+        searchView.displayResults(keyword,state.search.data);
+
+        Promise.all([state.search.getResults()]).then(values => {
+            clearLoader(elements.movieListContainer)
+        })
+        
     }
     else{
         alert('enter keyword')
@@ -33,8 +40,6 @@ const searchController = async () => {
 elements.searchForm.addEventListener('submit',function(e){
     e.preventDefault();
     searchController();
-    console.log('form-submitted');
-    console.log(elements)
 })
 
 // Movie Controller

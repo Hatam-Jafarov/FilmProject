@@ -9,6 +9,18 @@ export const elements = {
     movieListHeader: document.getElementById('movie-list-header')
 }
 
+export const renderLoader = parent => {
+  const loader = `<div class="reverse-spinner"></div>`;
+  parent.insertAdjacentHTML('beforebegin',loader)
+}
+
+export const clearLoader = parent =>{
+  const loader = parent.previousSibling;
+  if(loader){
+    loader.parentNode.removeChild(loader);
+  }
+}
+
 export const image_size = {
     backdrop_sizes: [
         "w300",

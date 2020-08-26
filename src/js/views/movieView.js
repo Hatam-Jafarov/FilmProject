@@ -1,7 +1,7 @@
 import { elements } from '../base';
 
 export const backToTop = () => {
-    window.scrollTo({top:0,behavior : "smooth"})
+    window.scrollTo({top:185,behavior : "smooth"})
 }
 
 export const closeDetails = () =>{
